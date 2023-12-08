@@ -1,4 +1,5 @@
 import {Box, Button, Grid} from "@mui/material";
+import {useTranslation} from "react-i18next";
 
 export const meta = () => {
   return [
@@ -8,9 +9,11 @@ export const meta = () => {
 };
 
 export default function _index() {
+  const {t, ready} = useTranslation('common')
+  if(!ready) return <></>
   return (
     <Grid>
-      <Box><Button>fedei</Button></Box>
+      <Box><Button>{t("hello")}</Button></Box>
     </Grid>
   );
 }
