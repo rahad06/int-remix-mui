@@ -5,34 +5,59 @@
  */
 
 import { PassThrough } from "node:stream";
-
 import { createReadableStreamFromReadable } from "@remix-run/node";
 import { RemixServer } from "@remix-run/react";
 import isbot from "isbot";
 import { renderToPipeableStream } from "react-dom/server";
-
+import { CacheProvider } from '@emotion/react';
+import ServerStyleContext from '../app/styles/server.context';
+import createEmotionCache from '../app/styles/createEmotionCache';
+import createEmotionServer from '@emotion/server/create-instance';
+import { renderToString } from 'react-dom/server';
 const ABORT_DELAY = 5_000;
 
 export default function handleRequest(
-  request,
-  responseStatusCode,
-  responseHeaders,
-  remixContext
+    request,
+    responseStatusCode,
+    responseHeaders,
+    remixContext,
 ) {
-  return isbot(request.headers.get("user-agent"))
-    ? handleBotRequest(
-        request,
-        responseStatusCode,
-        responseHeaders,
-        remixContext
-      )
-    : handleBrowserRequest(
-        request,
-        responseStatusCode,
-        responseHeaders,
-        remixContext
-      );
+  const cache = createEmotionCache();
+  const { extractCriticalToChunks } = createEmotionServer(cache);
+
+  const html = renderToString(
+      <ServerStyleContext.Provider value={null}>
+        <CacheProvider value={cache}>
+          <RemixServer
+              context={remixContext}
+              url={request.url}
+          />
+        </CacheProvider>
+      </ServerStyleContext.Provider>,
+  );
+
+  const chunks = extractCriticalToChunks(html);
+
+  const markup = renderToString(
+      <ServerStyleContext.Provider value={chunks.styles}>
+        <CacheProvider value={cache}>
+          <RemixServer
+              context={remixContext}
+              url={request.url}
+          />
+        </CacheProvider>
+      </ServerStyleContext.Provider>,
+  );
+
+  responseHeaders.set('Content-Type', 'text/html');
+
+  return new Response(`<!DOCTYPE html>${markup}`, {
+    status: responseStatusCode,
+    headers: responseHeaders,
+  });
 }
+
+
 
 function handleBotRequest(
   request,
