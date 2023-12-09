@@ -1,4 +1,3 @@
-import i18n from "./app/i18n.js";
 
 /** @type {import('@remix-run/dev').AppConfig} */
 export default {
@@ -10,7 +9,9 @@ export default {
       },
     }
   },
-  serverDependenciesToBundle: ["jodit-react", "remix-i18next", "react-i18next", ],
+  serverDependenciesToBundle: ["jodit-react", "remix-i18next", "react-i18next", "i18next",
+      "i18next-browser-languagedetector"
+  ],
   // appDirectory: "app",
   // assetsBuildDirectory: "public/build",
   // publicPath: "/build/",

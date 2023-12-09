@@ -21,8 +21,10 @@ import {useChangeLanguage} from "remix-i18next";
 import {useTranslation} from "react-i18next";
 import {json} from "@remix-run/node";
 import remixI18n from './i18next.server'
+import {I18nextProvider, initReactI18next} from "react-i18next";
 
 import './i18n';
+import i18next from "i18next";
 
 export const links = () => {
     return [
@@ -30,11 +32,11 @@ export const links = () => {
     ];
 };
 
-export const loader = async ({ request }) => {
+export const loader = async ({request}) => {
     const locale = await remixI18n.getLocale(request)
     const t = await remixI18n.getFixedT(request, 'common')
     const title = t('headTitle')
-    return json({ locale, title })
+    return json({locale, title})
 }
 
 export let handle = {
@@ -77,7 +79,7 @@ const Document = withEmotionCache(
         useChangeLanguage(locale)
         if (!ready) return <></>
         return (
-            <html lang={locale} dir={i18n.dir()}>
+            <html lang={i18n.resolvedLanguage} dir={i18n.dir()}>
             <head>
                 <meta
                     name='viewport'
@@ -98,7 +100,7 @@ const Document = withEmotionCache(
             {children}
             <ScrollRestoration/>
             <Scripts/>
-            {process.env.NODE_ENV === "development" && <LiveReload />}
+            {process.env.NODE_ENV === "development" && <LiveReload/>}
             </body>
             </html>
         );

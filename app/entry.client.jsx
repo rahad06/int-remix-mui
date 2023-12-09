@@ -33,7 +33,8 @@ function ClientCacheProvider({children}) {
 }
 
 async function hydrate() {
-    await i18next
+    if (!i18next.isInitialized)
+        await i18next
         .use(initReactI18next)
         .use(LanguageDetector)
         .use(Backend)

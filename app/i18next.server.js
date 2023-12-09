@@ -13,7 +13,7 @@ let i18next = new RemixI18Next({
             loadPath: resolve('./public/locales/{{lng}}/{{ns}}.json'),
         },
     },
-    backend: Backend
+    backend: Backend,
 });
 
 export default i18next;

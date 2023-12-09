@@ -14,12 +14,13 @@ import ServerStyleContext from '../app/styles/server.context';
 import createEmotionCache from '../app/styles/createEmotionCache';
 import createEmotionServer from '@emotion/server/create-instance';
 import {renderToString} from 'react-dom/server';
-import {createInstance} from "i18next";
+import {createInstance, loadResources} from "i18next";
 import Backend from "i18next-fs-backend";
 import {resolve} from "node:path";
 import {I18nextProvider, initReactI18next} from "react-i18next";
-import i18next from "./i18next.server"; // The backend file we created
-import i18n from "./i18n"; // The configuration file we created
+import i18next from "./i18next.server";
+import i18n from "./i18n";
+
 const ABORT_DELAY = 5_000;
 
 export default async function handleRequest(
@@ -74,41 +75,61 @@ export default async function handleRequest(
                 loadPath: resolve("./public/locales/{{lng}}/{{ns}}.json"),
             },
         });
-    return new Promise((resolve, reject) => {
-        let didError = false;
+    const translated = renderToString(
+        <I18nextProvider i18n={instance}>
+            <ServerStyleContext.Provider value={chunks.styles}>
+                <CacheProvider value={cache}>
+                    <RemixServer context={remixContext} url={request.url}/>
+                </CacheProvider>
+            </ServerStyleContext.Provider>
+        </I18nextProvider>
+    );
+    responseHeaders.set("Content-Type", "text/html");
 
-        let {pipe, abort} = renderToPipeableStream(
-            <I18nextProvider i18n={instance}>
-                <RemixServer context={remixContext} url={request.url}/>
-            </I18nextProvider>,
-            {
-                [callbackName]: () => {
-                    let body = new PassThrough();
-                    const stream = createReadableStreamFromReadable(body);
-                    responseHeaders.set("Content-Type", "text/html");
-
-                    resolve(
-                        new Response(stream, {
-                            headers: responseHeaders,
-                            status: didError ? 500 : responseStatusCode,
-                        })
-                    );
-
-                    pipe(body);
-                },
-                onShellError(error) {
-                    reject(error);
-                },
-                onError(error) {
-                    didError = true;
-
-                    console.error(error);
-                },
-            }
-        );
-
-        setTimeout(abort, ABORT_DELAY);
+    return new Response("<!DOCTYPE html>" + markup, {
+        status: responseStatusCode,
+        headers: responseHeaders,
     })
+    // return new Promise((resolve, reject) => {
+    //     let didError = false;
+    //
+    //     let {pipe, abort} = renderToPipeableStream(
+    //         <I18nextProvider i18n={instance}>
+    //             <ServerStyleContext.Provider value={null}>
+    //                 <CacheProvider value={cache}>
+    //                     <RemixServer context={remixContext} url={request.url}/>
+    //                 </CacheProvider>
+    //             </ServerStyleContext.Provider>
+    //         </I18nextProvider>
+    //         ,
+    //         {
+    //             [callbackName]: () => {
+    //                 let body = new PassThrough();
+    //                 const stream = createReadableStreamFromReadable(body);
+    //                 responseHeaders.set("Content-Type", "text/html");
+    //
+    //                 resolve(
+    //                     new Response(stream, {
+    //                         headers: responseHeaders,
+    //                         status: didError ? 500 : responseStatusCode,
+    //                     })
+    //                 );
+    //
+    //                 pipe(body);
+    //             },
+    //             onShellError(error) {
+    //                 reject(error);
+    //             },
+    //             onError(error) {
+    //                 didError = true;
+    //
+    //                 console.error(error);
+    //             },
+    //         }
+    //     );
+    //
+    //     setTimeout(abort, ABORT_DELAY);
+    // })
 }
 
 function handleBotRequest(
