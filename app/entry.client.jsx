@@ -35,35 +35,35 @@ function ClientCacheProvider({children}) {
 async function hydrate() {
     if (!i18next.isInitialized)
         await i18next
-        .use(initReactI18next)
-        .use(LanguageDetector)
-        .use(Backend)
-        .init({
-            ...i18n,
-            ns: getInitialNamespaces(),
-            backend: {
-                loadPath: "/locales/{{lng}}/{{ns}}.json",
-            },
-            detection: {
-                order: ["htmlTag"],
-                caches: [],
-            },
-        })
-        .then(() => {
-                startTransition(() => {
-                    hydrateRoot(
-                        document,
-                        <I18nextProvider i18n={i18next}>
+            .use(initReactI18next)
+            .use(LanguageDetector)
+            .use(Backend)
+            .init({
+                ...i18n,
+                ns: getInitialNamespaces(),
+                backend: {
+                    loadPath: "/locales/{{lng}}/{{ns}}.json",
+                },
+                detection: {
+                    order: ["htmlTag"],
+                    caches: [],
+                },
+            })
+            .then(() => {
+                    startTransition(() => {
+                        hydrateRoot(
+                            document,
                             <StrictMode>
-                                <ClientCacheProvider>
-                                    <RemixBrowser/>
-                                </ClientCacheProvider>
+                                <I18nextProvider i18n={i18next}>
+                                    <ClientCacheProvider>
+                                        <RemixBrowser/>
+                                    </ClientCacheProvider>
+                                </I18nextProvider>
                             </StrictMode>
-                        </I18nextProvider>
-                    );
-                });
-            }
-        )
+                        );
+                    });
+                }
+            )
 }
 
 if (window.requestIdleCallback) {
