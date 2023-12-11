@@ -23,8 +23,9 @@ import {json} from "@remix-run/node";
 import remixI18n from './i18next.server'
 import {I18nextProvider, initReactI18next} from "react-i18next";
 
-import './i18n';
+// import './i18n';
 import i18next from "i18next";
+import Layout from "./Layout.jsx";
 
 export const links = () => {
     return [
@@ -112,7 +113,9 @@ export default function App() {
         <Document>
             <ThemeProvider theme={theme}>
                 <CssBaseline/>
-                <Outlet/>
+                <Layout>
+                    <Outlet/>
+                </Layout>
             </ThemeProvider>
         </Document>
     );
