@@ -13,9 +13,9 @@ function GRowBtn(props) {
                 href={props.href}
                 sx={{
                     '&:hover': {
-                        background: props.delete ? theme.colors.error : theme.colors.primary.lighter
+                        background: props.delete ? theme.colors?.error : theme.colors?.primary.lighter
                     },
-                    color: props.delete ? theme.colors.error.dark : theme.palette.primary.main
+                    color: props.delete ? theme.colors?.error.dark : theme.palette.primary.main
                 }}
                 color="inherit"
                 size="small"

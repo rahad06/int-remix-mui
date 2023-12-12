@@ -20,9 +20,9 @@ const VisuallyHiddenInput = styled('input')({
 
 const CardAddAction = styled(Card)(
     ({ theme }) => `
-        border: ${theme.colors.primary.main} dashed 1px;
+        border: ${theme.colors?.primary.main} dashed 1px;
         height: 100%;
-        color: ${theme.colors.primary.main};
+        color: ${theme.colors?.primary.main};
         box-shadow: none;
         
         .MuiCardActionArea-root {
@@ -37,14 +37,14 @@ const CardAddAction = styled(Card)(
         }
         
         &:hover {
-          border-color: ${theme.colors.alpha.black[100]};
+          border-color: ${theme.colors?.alpha?.black[100]};
         }
 `
 );
 const AvatarAddWrapper = styled(Avatar)(
     ({ theme }) => `
-        background: ${theme.colors.alpha.black[5]};
-        color: ${theme.colors.primary.main};
+        background: ${theme.colors?.alpha?.black[5]};
+        color: ${theme.colors?.primary?.main};
         width: ${theme.spacing(8)};
         height: ${theme.spacing(8)};
 `

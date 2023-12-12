@@ -1,4 +1,4 @@
-﻿import { useRef, useState } from 'react';
+﻿import {useRef, useState} from 'react';
 
 
 import {
@@ -10,10 +10,11 @@ import {
     Typography,
     styled
 } from '@mui/material';
+import {PureLightTheme} from "../../../theme/schemes/PureLightTheme.jsx";
 
 
 const UserBoxButton = styled(Button)(
-    ({ theme }) => `
+    ({theme = PureLightTheme}) => `
         padding-left: ${theme.spacing(1)};
         padding-right: ${theme.spacing(1)};
         cursor: ${'default'};
@@ -21,29 +22,29 @@ const UserBoxButton = styled(Button)(
 );
 
 const MenuUserBox = styled(Box)(
-    ({ theme }) => `
-        background: ${theme.colors.alpha.black[5]};
+    ({theme}) => `
+        background: ${theme.colors?.alpha?.black[5]};
         padding: ${theme.spacing(2)};
 `
 );
 
 const UserBoxText = styled(Box)(
-    ({ theme }) => `
+    ({theme=PureLightTheme}) => `
         text-align: left;
         padding-left: ${theme.spacing(1)};
 `
 );
 
 const UserBoxLabel = styled(Typography)(
-    ({ theme }) => `
-        font-weight: ${theme.typography.fontWeightBold};
-        color: ${theme.palette.secondary.main};
+    ({theme = PureLightTheme}) => `
+        font-weight: ${theme.typography?.fontWeightBold};
+        color: ${theme.palette?.secondary?.main};
         display: block;
 `
 );
 
 const UserBoxDescription = styled(Typography)(
-    ({ theme }) => `
+    ({theme = PureLightTheme}) => `
         color: ${lighten(theme.palette.secondary.main, 0.5)}
 `
 );
@@ -69,7 +70,7 @@ function HeaderUserbox() {
     return (
         <>
             <UserBoxButton color="secondary" ref={ref} onClick={handleOpen} className={'header-user-box-btn'}>
-                <Avatar variant="rounded" alt={user.name} src={user.avatar} />
+                <Avatar variant="rounded" alt={user.name} src={user.avatar}/>
                 <Hidden mdDown>
                     <UserBoxText>
                         <UserBoxLabel variant="body1">{user.name}</UserBoxLabel>

@@ -1,5 +1,4 @@
-﻿import { useContext } from 'react';
-
+﻿
 import {
     Box,
     alpha,
@@ -14,11 +13,12 @@ import {
 import MenuTwoToneIcon from '@mui/icons-material/MenuTwoTone';
 import CloseTwoToneIcon from '@mui/icons-material/CloseTwoTone';
 import HeaderUserbox from "./HeaderExtras/HeaderUserBox";
-import useSidebarStore from "../../stores/useSidebarStore";
+import useSidebarStore from "../../stores/useSidebarStore.jsx";
+import {PureLightTheme} from "../../theme/schemes/PureLightTheme.jsx";
 
 
 const HeaderWrapper = styled(Box)(
-    ({ theme }) => `
+    ({ theme= PureLightTheme }) => `
         height: ${theme.header.height};
         color: ${theme.header.textColor};
         padding: ${theme.spacing(0, 2)};
@@ -30,7 +30,7 @@ const HeaderWrapper = styled(Box)(
         justify-content: space-between;
         width: 100%;
         @media (min-width: ${theme.breakpoints.values.lg}px) {
-            right: ${theme.sidebar.width};
+            right: ${theme.sidebar?.width};
             width: auto;
         }
 `
@@ -49,14 +49,14 @@ function Header(props) {
                 boxShadow:
                     theme.palette.mode === 'dark'
                         ? `0 1px 0 ${alpha(
-                            lighten(theme.colors.primary.main, 0.7),
+                            lighten(theme.colors?.primary?.main, 0.7),
                             0.15
                         )}, 0px 2px 8px -3px rgba(0, 0, 0, 0.2), 0px 5px 22px -4px rgba(0, 0, 0, .1)`
                         : `0px 2px 8px -3px ${alpha(
-                            theme.colors.alpha.black[100],
+                            theme.colors?.alpha?.black[100],
                             0.2
                         )}, 0px 5px 22px -4px ${alpha(
-                            theme.colors.alpha.black[100],
+                            theme.colors?.alpha?.black[100],
                             0.1
                         )}`
             }}

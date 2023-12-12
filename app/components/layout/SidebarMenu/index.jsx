@@ -1,18 +1,17 @@
+import React from "react";
 
 import {
   Box,
   styled,
 } from '@mui/material';
-import BadgeIcon from '@mui/icons-material/Badge';
-import ContactsIcon from '@mui/icons-material/Contacts';
 import {useTranslation} from "react-i18next";
-import SupervisorAccountIcon from '@mui/icons-material/SupervisorAccount';
 import ListBox from "./ListBox";
 import GScroll from "../../universal/scroll/GScroll";
-import PersonAddAlt1Icon from '@mui/icons-material/PersonAddAlt1';
 import useSidebarStore from "../../../stores/useSidebarStore";
+import IconsDynamic from "../../universal/utils/IconsDynamic.jsx";
+import {PureLightTheme} from "../../../theme/schemes/PureLightTheme.jsx";
 const MenuWrapper = styled(Box)(
-  ({ theme }) => `
+  ({ theme = PureLightTheme }) => `
   .MuiList-root {
     padding: ${theme.spacing(1)};
 
@@ -25,7 +24,7 @@ const MenuWrapper = styled(Box)(
       text-transform: uppercase;
       font-weight: bold;
       font-size: ${theme.typography.pxToRem(12)};
-      color: ${theme.colors.alpha.black[50]};
+      color: ${theme.colors?.alpha?.black[50]};
       padding: ${theme.spacing(0, 2.5)};
       line-height: 1.4;
     }
@@ -52,24 +51,24 @@ function SidebarMenu() {
             {id:1, 
           name: t("current_colleagues"), 
               url: '/currentColleagues', 
-              icon: <SupervisorAccountIcon />
+              icon: <IconsDynamic />
             },
-            {id:3,
-                name: t("former_colleagues"),
-                url: '/formerColleagues',
-                icon: <ContactsIcon />
-            },
-            {id:2, 
-          name: t("all_colleagues"), 
-              url: '/colleagues', 
-              icon: <BadgeIcon />
-            },
-           
-            {id:4, 
-          name: t("add_colleague"), 
-              url: '/addColleague', 
-              icon: <PersonAddAlt1Icon />
-            },
+          //   {id:3,
+          //       name: t("former_colleagues"),
+          //       url: '/formerColleagues',
+          //       icon: <ContactsIcon />
+          //   },
+          //   {id:2,
+          // name: t("all_colleagues"),
+          //     url: '/colleagues',
+          //     icon: <BadgeIcon />
+          //   },
+          //
+          //   {id:4,
+          // name: t("add_colleague"),
+          //     url: '/addColleague',
+          //     icon: <PersonAddAlt1Icon />
+          //   },
         ]}
         />
       </MenuWrapper>

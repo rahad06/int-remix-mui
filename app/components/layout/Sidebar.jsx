@@ -1,4 +1,5 @@
-﻿
+﻿import React from "react";
+
 import {
     Box,
     Drawer,
@@ -14,13 +15,14 @@ import {
 import SidebarMenu from "./SidebarMenu";
 import Logo from "../singleComponents/LogoSign/LogoSign.jsx";
 import useSidebarStore from "../../stores/useSidebarStore";
+import {PureLightTheme} from "../../theme/schemes/PureLightTheme.jsx";
 
 
 const SidebarWrapper = styled(Box)(
-    ({ theme }) => `
-        width: ${theme.sidebar.width};
-        min-width: ${theme.sidebar.width};
-        color: ${theme.colors.alpha.trueWhite[70]};
+    ({ theme = PureLightTheme }) => `
+        width: ${theme.sidebar?.width ?? '290px'};
+        min-width: ${theme.sidebar?.width ?? '290px'};
+        color: ${theme.colors?.alpha?.trueWhite[70]};
         position: relative;
         z-index: 7;
         height: 100%;
@@ -47,10 +49,10 @@ function Sidebar() {
                     top: 0,
                     background:
                         theme.palette.mode === 'light'
-                            ? alpha(lighten(theme.header.background, 0.1), 0.5)
-                            : darken(theme.colors.alpha.black[100], 0.5),
+                            ? alpha(lighten(theme.header?.background, 0.1), 0.5)
+                            : darken(theme.colors?.alpha?.black[100], 0.5),
                     boxShadow:
-                        theme.palette.mode === 'dark' ? theme.sidebar.boxShadow : 'none'
+                        theme.palette?.mode === 'dark' ? theme.sidebar?.boxShadow : 'none'
                 }}
             >
                 {/*<Scrollbar>*/}
@@ -71,7 +73,7 @@ function Sidebar() {
                         sx={{
                             mt: 0,
                             mx: theme.spacing(2),
-                            background: theme.colors.alpha.trueWhite[10]
+                            background: theme.colors?.alpha?.trueWhite[10]
                         }}
                     />
                     <SidebarMenu />
@@ -80,7 +82,7 @@ function Sidebar() {
             <Drawer
                 className={'mobile-drawer prime-bg'}
                 sx={{
-                    boxShadow: `${theme.sidebar.boxShadow}`
+                    boxShadow: `${theme.sidebar?.boxShadow}`
                 }}
                 anchor={theme.direction === 'rtl' ? 'left' : 'right'}
                 open={sidebarToggle}
@@ -92,8 +94,8 @@ function Sidebar() {
                     sx={{
                         background:
                             theme.palette.mode === 'dark'
-                                ? theme.colors.alpha.white[100]
-                                : darken(theme.colors.alpha.black[100], 0.5)
+                                ? theme.colors?.alpha?.white[100]
+                                : darken(theme.colors?.alpha?.black[100], 0.5)
                     }}
                 >
                         <Box mt={3}>
@@ -110,7 +112,7 @@ function Sidebar() {
                             sx={{
                                 mt: theme.spacing(3),
                                 mx: theme.spacing(2),
-                                background: theme.colors.alpha.trueWhite[10]
+                                background: theme.colors?.alpha?.trueWhite[10]
                             }}
                         />
                     

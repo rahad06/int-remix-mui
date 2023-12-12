@@ -1,19 +1,23 @@
-import Backend from "i18next-fs-backend";
-import { resolve } from "node:path";
+import { createCookie } from "@remix-run/cloudflare";
 import { RemixI18Next } from "remix-i18next";
-import i18n from "./i18n";
-let i18next = new RemixI18Next({
-    detection: {
-        supportedLanguages: i18n.supportedLngs,
-        fallbackLanguage: i18n.fallbackLng,
-    },
-    i18next: {
-        ...i18n,
-        backend: {
-            loadPath: resolve('./public/locales/{{lng}}/{{ns}}.json'),
-        },
-    },
-    backend: Backend,
+
+import fa from "../public/locales/fa/common.json";
+
+export let localeCookie = createCookie("locale", {
+    path: "/",
+    httpOnly: true,
+    secure: process.env.NODE_ENV === "production",
 });
 
+let i18next = new RemixI18Next({
+    detection: {
+        fallbackLanguage: "fa",
+        supportedLanguages: ["fa"],
+        cookie: localeCookie,
+    },
+    i18next: {
+        supportedLngs: ["fa"],
+        resources: { fa: { translation: fa } },
+    },
+});
 export default i18next;

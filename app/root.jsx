@@ -1,3 +1,4 @@
+import React from "react";
 import {
     Links,
     LiveReload,
@@ -10,10 +11,9 @@ import {
 } from '@remix-run/react';
 import {useContext, useEffect, useRef} from 'react';
 import {CssBaseline} from '@mui/material';
-import {PureLightTheme} from './theme/schemes/PureLightTheme.js';
 import {withEmotionCache} from '@emotion/react';
 import main from '../app/styles/main.css'
-import {themeCreator} from "./theme/base.js";
+import {themeCreator} from "./theme/base";
 import ClientStyleContext from "./styles/client.context.jsx";
 import ServerStyleContext from "./styles/server.context.jsx";
 import {ThemeProvider} from "@mui/material";
@@ -21,10 +21,6 @@ import {useChangeLanguage} from "remix-i18next";
 import {useTranslation} from "react-i18next";
 import {json} from "@remix-run/node";
 import remixI18n from './i18next.server'
-import {I18nextProvider, initReactI18next} from "react-i18next";
-
-// import './i18n';
-import i18next from "i18next";
 import Layout from "./Layout.jsx";
 
 export const links = () => {
@@ -123,7 +119,6 @@ export default function App() {
 
 export function ErrorBoundary() {
     const error = useRouteError();
-
     if (isRouteErrorResponse(error)) {
         return (
             <div>
@@ -140,6 +135,10 @@ export function ErrorBoundary() {
                 <p>{error.message}</p>
                 <p>The stack trace is:</p>
                 <pre>{error.stack}</pre>
+                <p>The error name is:</p>
+                <span>{error.name}</span>
+                <p>The error cause is:</p>
+                <span>{error.cause}</span>
             </div>
         );
     } else {

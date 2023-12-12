@@ -17,11 +17,11 @@ import MoreVertTwoToneIcon from '@mui/icons-material/MoreVertTwoTone';
 
 const ButtonError = styled(Button)(
     ({ theme }) => `
-     background: ${theme.colors.error.main};
+     background: ${theme.colors?.error?.main};
      color: ${theme.palette.error.contrastText};
 
      &:hover {
-        background: ${theme.colors.error.dark};
+        background: ${theme.colors?.error?.dark};
      }
     `
 );

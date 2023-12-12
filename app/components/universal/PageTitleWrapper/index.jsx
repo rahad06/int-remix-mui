@@ -1,8 +1,9 @@
 import PropTypes from 'prop-types';
 import { Box, Container, styled } from '@mui/material';
+import {PureLightTheme} from "../../../theme/schemes/PureLightTheme.jsx";
 
 const PageTitle = styled(Box)(
-  ({ theme }) => `
+  ({ theme = PureLightTheme }) => `
         padding: ${theme.spacing(4)};
 `
 );

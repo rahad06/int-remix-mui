@@ -150,6 +150,7 @@ export const faIR = {
             defaultProps: {
                 'aria-label': 'ناوبری صفحه',
                 getItemAriaLabel: (type, page, selected) => {
+                    if(!type) return
                     if (type === 'page') {
                         return `${selected ? '' : 'رفتن به '}صفحهٔ ${page}`;
                     }

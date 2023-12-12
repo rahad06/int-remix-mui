@@ -1,8 +1,9 @@
 ﻿import React from 'react';
 import {alpha, Box, Button, List, ListItem, ListSubheader, styled} from "@mui/material";
 import NavListItem from "./NavListItem";
+import {PureLightTheme} from "../../../theme/schemes/PureLightTheme.jsx";
 const SubMenuWrapper = styled(Box)(
-    ({ theme }) => `
+    ({ theme = PureLightTheme }) => `
     .MuiList-root {
 direction: rtl;
       .MuiListItem-root {
@@ -13,7 +14,7 @@ direction: rtl;
           right: ${theme.spacing(3.2)};
 
           .MuiBadge-standard {
-            background: ${theme.colors.primary.main};
+            background: ${theme.colors?.primary.main};
             font-size: ${theme.typography.pxToRem(10)};
             font-weight: bold;
             text-transform: uppercase;
@@ -23,7 +24,7 @@ direction: rtl;
     
         .MuiButton-root {
           display: flex;
-          color: ${theme.colors.alpha.black[70]};
+          color: ${theme.colors?.alpha?.black[70]};
           background-color: transparent;
           width: 100%;
           justify-content: flex-start;
@@ -40,13 +41,13 @@ direction: rtl;
           }
 
           .MuiButton-startIcon {
-            color: ${theme.colors.alpha.black[30]};
+            color: ${theme.colors?.alpha?.black[30]};
             font-size: ${theme.typography.pxToRem(20)};
             margin-left: ${theme.spacing(1)};
           }
           
           .MuiButton-endIcon {
-            color: ${theme.colors.alpha.black[50]};
+            color: ${theme.colors?.alpha?.black[50]};
             margin-left: auto;
             opacity: .8;
             font-size: ${theme.typography.pxToRem(20)};
@@ -54,12 +55,12 @@ direction: rtl;
 
           &.active,
           &:hover {
-            background-color: ${alpha(theme.colors.alpha.black[100], 0.06)};
-            color: ${theme.colors.alpha.black[100]};
+            background-color: ${alpha(theme.colors?.alpha?.black[100], 0.06)};
+            color: ${theme.colors?.alpha?.black[100]};
 
             .MuiButton-startIcon,
             .MuiButton-endIcon {
-              color: ${theme.colors.alpha.black[100]};
+              color: ${theme.colors?.alpha?.black[100]};
             }
           }
         }
@@ -92,7 +93,7 @@ direction: rtl;
 
               &:before {
                 content: ' ';
-                background: ${theme.colors.alpha.black[100]};
+                background: ${theme.colors?.alpha?.black[100]};
                 opacity: 0;
                 transition: ${theme.transitions.create([
         'transform',

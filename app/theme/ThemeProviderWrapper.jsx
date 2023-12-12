@@ -2,7 +2,7 @@ import React, {useState} from 'react';
 import {ThemeProvider} from '@mui/material';
 import {themeCreator} from './base';
 
-export const ThemeContext = React.createContext();
+export const ThemeContext = React.createContext(null);
 
 const ThemeProviderWrapper = function (props) {
     // const curThemeName = localStorage.getItem('appTheme') || 'PureLightTheme';

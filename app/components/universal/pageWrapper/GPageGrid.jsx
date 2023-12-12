@@ -12,7 +12,7 @@ import FileDownloadIcon from '@mui/icons-material/FileDownload';
 import NightlightIcon from '@mui/icons-material/Nightlight';
 const MenuUserBox = styled(Box)(
     ({theme}) => `
-        background: ${theme.colors.alpha.black[5]};
+        background: ${theme.colors?.alpha?.black[5]};
         padding: ${theme.spacing(2)};
 `
 );

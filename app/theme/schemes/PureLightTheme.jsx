@@ -246,15 +246,15 @@ export const PureLightTheme = createTheme({
   },
   header: {
     height: '120px',
-    background: colors.alpha.white[100],
+    background: colors?.alpha?.white[100],
     boxShadow: colors.shadows.cardSm,
     textColor: colors.secondary.main
   },
   spacing: 9,
   palette: {
     common: {
-      black: colors.alpha.black[100],
-      white: colors.alpha.white[100]
+      black: colors?.alpha?.black[100],
+      white: colors?.alpha?.white[100]
     },
     mode: 'light',
     primary: {
@@ -271,45 +271,45 @@ export const PureLightTheme = createTheme({
       light: colors.error.light,
       main: colors.error.main,
       dark: colors.error.dark,
-      contrastText: colors.alpha.white[100]
+      contrastText: colors?.alpha?.white[100]
     },
     success: {
       light: colors.success.light,
       main: colors.success.main,
       dark: colors.success.dark,
-      contrastText: colors.alpha.white[100]
+      contrastText: colors?.alpha?.white[100]
     },
     info: {
       light: colors.info.light,
       main: colors.info.main,
       dark: colors.info.dark,
-      contrastText: colors.alpha.white[100]
+      contrastText: colors?.alpha?.white[100]
     },
     warning: {
       light: colors.warning.light,
       main: colors.warning.main,
       dark: colors.warning.dark,
-      contrastText: colors.alpha.white[100]
+      contrastText: colors?.alpha?.white[100]
     },
     text: {
-      primary: colors.alpha.black[100],
-      secondary: colors.alpha.black[70],
-      disabled: colors.alpha.black[50]
+      primary: colors?.alpha?.black[100],
+      secondary: colors?.alpha?.black[70],
+      disabled: colors?.alpha?.black[50]
     },
     background: {
-      paper: colors.alpha.white[100],
+      paper: colors?.alpha?.white[100],
       default: colors.layout.general.bodyBg
     },
     action: {
-      active: colors.alpha.black[100],
+      active: colors?.alpha?.black[100],
       hover: colors.primary.lighter,
       hoverOpacity: 0.1,
-      selected: colors.alpha.black[10],
+      selected: colors?.alpha?.black[10],
       selectedOpacity: 0.1,
-      disabled: colors.alpha.black[50],
-      disabledBackground: colors.alpha.black[5],
+      disabled: colors?.alpha?.black[50],
+      disabledBackground: colors?.alpha?.black[5],
       disabledOpacity: 0.38,
-      focus: colors.alpha.black[10],
+      focus: colors?.alpha?.black[10],
       focusOpacity: 0.05,
       activatedOpacity: 0.12
     },
@@ -477,7 +477,7 @@ export const PureLightTheme = createTheme({
     MuiSelect: {
       styleOverrides: {
         iconOutlined: {
-          color: colors.alpha.black[50]
+          color: colors?.alpha?.black[50]
         },
         icon: {
           top: 'calc(50% - 14px)'
@@ -491,7 +491,7 @@ export const PureLightTheme = createTheme({
             paddingRight: 6
           },
           '&:hover .MuiOutlinedInput-notchedOutline': {
-            borderColor: colors.alpha.black[50]
+            borderColor: colors?.alpha?.black[50]
           },
           '&.Mui-focused:hover .MuiOutlinedInput-notchedOutline': {
             borderColor: colors.primary.main
@@ -505,8 +505,8 @@ export const PureLightTheme = createTheme({
           fontWeight: 'bold',
           lineHeight: '40px',
           fontSize: 13,
-          background: colors.alpha.black[5],
-          color: colors.alpha.black[70]
+          background: colors?.alpha?.black[5],
+          color: colors?.alpha?.black[70]
         }
       }
     },
@@ -531,11 +531,11 @@ export const PureLightTheme = createTheme({
     MuiChip: {
       styleOverrides: {
         colorSecondary: {
-          background: colors.alpha.black[5],
-          color: colors.alpha.black[100],
+          background: colors?.alpha?.black[5],
+          color: colors?.alpha?.black[100],
 
           '&:hover': {
-            background: colors.alpha.black[10]
+            background: colors?.alpha?.black[10]
           }
         },
         deleteIcon: {
@@ -568,8 +568,8 @@ export const PureLightTheme = createTheme({
           fontWeight: 'bold'
         },
         colorDefault: {
-          background: colors.alpha.black[30],
-          color: colors.alpha.white[100]
+          background: colors?.alpha?.black[30],
+          color: colors?.alpha?.white[100]
         }
       }
     },
@@ -579,9 +579,9 @@ export const PureLightTheme = createTheme({
           alignItems: 'center'
         },
         avatar: {
-          background: colors.alpha.black[10],
+          background: colors?.alpha?.black[10],
           fontSize: 13,
-          color: colors.alpha.black[70],
+          color: colors?.alpha?.black[70],
           fontWeight: 'bold',
 
           '&:first-of-type': {
@@ -610,7 +610,7 @@ export const PureLightTheme = createTheme({
             boxShadow: colors.shadows.primary
           },
           '&.MuiButtonBase-root:hover': {
-            background: colors.alpha.black[5]
+            background: colors?.alpha?.black[5]
           },
           '&.Mui-selected.MuiButtonBase-root:hover': {
             background: colors.primary.main
@@ -638,15 +638,15 @@ export const PureLightTheme = createTheme({
         },
         containedSecondary: {
           backgroundColor: colors.secondary.main,
-          color: colors.alpha.white[100],
-          border: `1px solid ${colors.alpha.black[30]}`
+          color: colors?.alpha?.white[100],
+          border: `1px solid ${colors?.alpha?.black[30]}`
         },
         outlinedSecondary: {
-          backgroundColor: colors.alpha.white[100],
+          backgroundColor: colors?.alpha?.white[100],
 
           '&:hover, &.MuiSelected': {
-            backgroundColor: colors.alpha.black[5],
-            color: colors.alpha.black[100]
+            backgroundColor: colors?.alpha?.black[5],
+            color: colors?.alpha?.black[100]
           }
         },
         sizeSmall: {
@@ -687,11 +687,11 @@ export const PureLightTheme = createTheme({
       styleOverrides: {
         root: {
           color: colors.primary.main,
-          background: colors.alpha.white[100],
+          background: colors?.alpha?.white[100],
           transition: 'all .2s',
 
           '&:hover, &.Mui-selected, &.Mui-selected:hover': {
-            color: colors.alpha.white[100],
+            color: colors?.alpha?.white[100],
             background: colors.primary.main
           }
         }
@@ -731,7 +731,7 @@ export const PureLightTheme = createTheme({
     MuiDivider: {
       styleOverrides: {
         root: {
-          background: colors.alpha.black[10],
+          background: colors?.alpha?.black[10],
           border: 0,
           height: 1
         },
@@ -752,7 +752,7 @@ export const PureLightTheme = createTheme({
           }
         },
         wrapper: {
-          background: colors.alpha.white[100],
+          background: colors?.alpha?.white[100],
           fontWeight: 'bold',
           height: 24,
           lineHeight: '24px',
@@ -805,8 +805,8 @@ export const PureLightTheme = createTheme({
           },
           '& .MuiSlider-valueLabel': {
             borderRadius: 6,
-            background: colors.alpha.black[100],
-            color: colors.alpha.white[100]
+            background: colors?.alpha?.black[100],
+            color: colors?.alpha?.white[100]
           }
         }
       }
@@ -883,11 +883,11 @@ export const PureLightTheme = createTheme({
             marginRight: 4
           },
           '&.Mui-selected, &.Mui-selected:hover': {
-            color: colors.alpha.white[100],
+            color: colors?.alpha?.white[100],
             zIndex: 5
           },
           '&:hover': {
-            color: colors.alpha.black[100]
+            color: colors?.alpha?.black[100]
           }
         }
       }
@@ -905,14 +905,14 @@ export const PureLightTheme = createTheme({
             marginTop: 1,
             marginBottom: 1,
             transition: 'all .2s',
-            color: colors.alpha.black[70],
+            color: colors?.alpha?.black[70],
 
             '& .MuiTouchRipple-root': {
               opacity: 0.2
             },
 
             '&:hover, &:active, &.active, &.Mui-selected': {
-              color: colors.alpha.black[100],
+              color: colors?.alpha?.black[100],
               background: alpha(colors.primary.lighter, 0.4)
             }
           }
@@ -926,7 +926,7 @@ export const PureLightTheme = createTheme({
           transition: 'all .2s',
 
           '&:hover, &:active, &.active, &.Mui-selected': {
-            color: colors.alpha.black[100],
+            color: colors?.alpha?.black[100],
             background: alpha(colors.primary.lighter, 0.4)
           },
           '&.Mui-selected:hover': {
@@ -942,7 +942,7 @@ export const PureLightTheme = createTheme({
             color: colors.secondary.main,
 
             '&:hover, &:active, &.active, &.Mui-selected': {
-              color: colors.alpha.black[100],
+              color: colors?.alpha?.black[100],
               background: lighten(colors.primary.lighter, 0.5)
             }
           }
@@ -971,7 +971,7 @@ export const PureLightTheme = createTheme({
           }
         },
         popupIndicator: {
-          color: colors.alpha.black[50],
+          color: colors?.alpha?.black[50],
 
           '&:hover': {
             background: colors.primary.lighter,
@@ -1005,13 +1005,13 @@ export const PureLightTheme = createTheme({
     MuiTableRow: {
       styleOverrides: {
         head: {
-          background: colors.alpha.black[5]
+          background: colors?.alpha?.black[5]
         },
         root: {
           transition: 'background-color .2s',
 
           '&.MuiTableRow-hover:hover': {
-            backgroundColor: colors.alpha.black[5]
+            backgroundColor: colors?.alpha?.black[5]
           }
         }
       }
@@ -1019,14 +1019,14 @@ export const PureLightTheme = createTheme({
     MuiTableCell: {
       styleOverrides: {
         root: {
-          borderBottomColor: colors.alpha.black[10],
+          borderBottomColor: colors?.alpha?.black[10],
           fontSize: 14
         },
         head: {
           textTransform: 'uppercase',
           fontSize: 13,
           fontWeight: 'bold',
-          color: colors.alpha.black[70]
+          color: colors?.alpha?.black[70]
         }
       }
     },
@@ -1055,7 +1055,7 @@ export const PureLightTheme = createTheme({
           color: colors.info.main
         },
         action: {
-          color: colors.alpha.black[70]
+          color: colors?.alpha?.black[70]
         }
       }
     },
@@ -1070,12 +1070,12 @@ export const PureLightTheme = createTheme({
           left: -6
         },
         outlined: {
-          backgroundColor: colors.alpha.white[100],
-          boxShadow: `0 0 0 6px ${colors.alpha.white[100]}`
+          backgroundColor: colors?.alpha?.white[100],
+          boxShadow: `0 0 0 6px ${colors?.alpha?.white[100]}`
         },
         outlinedPrimary: {
-          backgroundColor: colors.alpha.white[100],
-          boxShadow: `0 0 0 6px ${colors.alpha.white[100]}`
+          backgroundColor: colors?.alpha?.white[100],
+          boxShadow: `0 0 0 6px ${colors?.alpha?.white[100]}`
         }
       }
     },
@@ -1086,7 +1086,7 @@ export const PureLightTheme = createTheme({
           height: '100%',
           top: 0,
           borderRadius: 50,
-          backgroundColor: colors.alpha.black[10]
+          backgroundColor: colors?.alpha?.black[10]
         }
       }
     },
@@ -1110,12 +1110,12 @@ export const PureLightTheme = createTheme({
     MuiTooltip: {
       styleOverrides: {
         tooltip: {
-          backgroundColor: alpha(colors.alpha.black['100'], 0.95),
+          backgroundColor: alpha(colors?.alpha?.black['100'], 0.95),
           padding: '8px 16px',
           fontSize: 13
         },
         arrow: {
-          color: alpha(colors.alpha.black['100'], 0.95)
+          color: alpha(colors?.alpha?.black['100'], 0.95)
         }
       }
     },
@@ -1139,18 +1139,18 @@ export const PureLightTheme = createTheme({
           }
         },
         thumb: {
-          border: `1px solid ${colors.alpha.black[30]}`,
-          boxShadow: `0px 9px 14px ${colors.alpha.black[10]}, 0px 2px 2px ${colors.alpha.black[10]}`
+          border: `1px solid ${colors?.alpha?.black[30]}`,
+          boxShadow: `0px 9px 14px ${colors?.alpha?.black[10]}, 0px 2px 2px ${colors?.alpha?.black[10]}`
         },
         track: {
-          backgroundColor: colors.alpha.black[5],
-          border: `1px solid ${colors.alpha.black[10]}`,
-          boxShadow: `inset 0px 1px 1px ${colors.alpha.black[10]}`,
+          backgroundColor: colors?.alpha?.black[5],
+          border: `1px solid ${colors?.alpha?.black[10]}`,
+          boxShadow: `inset 0px 1px 1px ${colors?.alpha?.black[10]}`,
           opacity: 1
         },
         colorPrimary: {
           '& .MuiSwitch-thumb': {
-            backgroundColor: colors.alpha.white[100]
+            backgroundColor: colors?.alpha?.white[100]
           },
 
           '&.Mui-checked .MuiSwitch-thumb': {
@@ -1164,7 +1164,7 @@ export const PureLightTheme = createTheme({
         root: {
           paddingTop: 20,
           paddingBottom: 20,
-          background: colors.alpha.black[5]
+          background: colors?.alpha?.black[5]
         }
       }
     },
@@ -1220,7 +1220,7 @@ export const PureLightTheme = createTheme({
       fontWeight: 700,
       fontSize: 25,
       lineHeight: 1.4,
-      color: colors.alpha.black[100]
+      color: colors?.alpha?.black[100]
     },
     h4: {
       fontWeight: 700,
@@ -1245,16 +1245,16 @@ export const PureLightTheme = createTheme({
     caption: {
       fontSize: 13,
       textTransform: 'uppercase',
-      color: colors.alpha.black[50]
+      color: colors?.alpha?.black[50]
     },
     subtitle1: {
       fontSize: 14,
-      color: colors.alpha.black[70]
+      color: colors?.alpha?.black[70]
     },
     subtitle2: {
       fontWeight: 400,
       fontSize: 15,
-      color: colors.alpha.black[70]
+      color: colors?.alpha?.black[70]
     },
     overline: {
       fontSize: 13,
